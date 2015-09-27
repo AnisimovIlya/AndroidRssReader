@@ -1,0 +1,47 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    tools:context="com.test.ilya.news_02.SettingsActivity">
+
+    <RadioGroup
+        android:id="@+id/settings_radio_group"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#333333"
+        android:layout_alignParentTop="true"
+        android:orientation="vertical">
+
+        <RadioButton
+            android:id="@+id/rbk_sport_btn"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="24dp"
+            android:layout_weight="1"
+            android:text="@string/sport_news"/>
+        <RadioButton
+            android:id="@+id/rbk_all_radio_btn"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="24dp"
+            android:layout_weight="1"
+            android:text="@string/rbk_daily"
+            />
+        <RadioButton
+            android:id="@+id/rbk_auto_radio_btn"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="24dp"
+            android:layout_weight="1"
+            android:text="@string/auto_news"/>
+    </RadioGroup>
+
+
+    <Button
+        android:id="@+id/save_btn"
+        android:layout_height="100dp"
+        android:layout_width="fill_parent"
+        android:layout_alignParentBottom="true"
+        android:text="@string/save_setting_btn"
+        />
+</RelativeLayout>
