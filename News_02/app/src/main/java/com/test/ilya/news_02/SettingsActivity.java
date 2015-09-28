@@ -11,7 +11,6 @@ import android.widget.RadioButton;
 
 public class SettingsActivity extends Activity {
 
-
     SharedPreferences settingsUrl;
     String url;
     View.OnClickListener radioListener;
@@ -42,8 +41,10 @@ public class SettingsActivity extends Activity {
         };
         Button sportClick = (Button) findViewById(R.id.rbk_sport_btn);
         sportClick.setOnClickListener(radioListener);
+
         Button allNewsClick =(Button) findViewById(R.id.rbk_all_radio_btn);
         allNewsClick.setOnClickListener(radioListener);
+
         Button autoNewsClick = (Button) findViewById(R.id.rbk_auto_radio_btn);
         autoNewsClick.setOnClickListener(radioListener);
 

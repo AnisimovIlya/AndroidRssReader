@@ -10,10 +10,9 @@ import java.net.URL;
 import java.util.ArrayList;
 
 public class RssParser {
-    static final String LINK = "link";
-    static final String TITLE = "title";
 
     final URL url;
+
     public  RssParser(String newsUrl){
         try{
             this.url = new URL(newsUrl);
@@ -22,6 +21,7 @@ public class RssParser {
             throw new RuntimeException();
         }
     }
+
     public ArrayList<RssMessage> rssRead()throws Exception{
         ArrayList<RssMessage> messages= new ArrayList<RssMessage>();
         InputStream inputStream = null;
@@ -32,14 +32,17 @@ public class RssParser {
         connection.setDoInput(true);
         connection.connect();
         inputStream = connection.getInputStream();
+
         XmlPullParserFactory factory = XmlPullParserFactory.newInstance();
         factory.setNamespaceAware(true);
         XmlPullParser xmlPullParser = factory.newPullParser();
         xmlPullParser.setInput(inputStream, null);
+
         boolean insideMessage = false;
         int eventType = xmlPullParser.getEventType();
         String link="";
         String title="";
+
         while (eventType != XmlPullParser.END_DOCUMENT) {
             if (eventType == XmlPullParser.START_TAG) {
                 if (xmlPullParser.getName().equals("item")) {

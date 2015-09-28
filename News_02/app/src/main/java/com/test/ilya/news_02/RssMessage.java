@@ -6,8 +6,7 @@ public class RssMessage {
     String link;
 
     public RssMessage(){
-        this.title = "";
-        this.link = "";
+        this("","");
     }
     public RssMessage(String title,String link){
         this.title = title;

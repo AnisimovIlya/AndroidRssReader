@@ -29,19 +29,19 @@ public class NewsListActivity extends Activity {
 
     public class GetTitleNews extends AsyncTask<Void, ArrayList<RssMessage>, ArrayList<RssMessage>> {
 
+        Context context;
         public GetTitleNews(Context context){
             this.context = context;
         }
-        Context context;
 
         @Override
         protected ArrayList<RssMessage> doInBackground(Void... params) {
             ArrayList<RssMessage> messages = new ArrayList<RssMessage>();
-            String news_url;
+            String newsUrl;
             settingsPrefs = getSharedPreferences("news_settings",MODE_PRIVATE);
-            news_url = settingsPrefs.getString("news_url","http://static.feed.rbc.ru/rbc/internal/rss.rbc.ru/rbc.ru/news.rss");
-            Log.d("URL",news_url);
-            RssParser parser = new RssParser(news_url);
+            newsUrl = settingsPrefs.getString("news_url","http://static.feed.rbc.ru/rbc/internal/rss.rbc.ru/rbc.ru/news.rss");
+            Log.d("URL",newsUrl);
+            RssParser parser = new RssParser(newsUrl);
             try {
                 messages = parser.rssRead();
             } catch (Exception e) {
@@ -50,6 +50,7 @@ public class NewsListActivity extends Activity {
             }
             return messages;
         }
+
         @Override
         protected void onPostExecute(final ArrayList<RssMessage>messages){
             final ListView listView = (ListView) findViewById(R.id.news_list);
@@ -60,7 +61,9 @@ public class NewsListActivity extends Activity {
             ArrayAdapter<String> arAd = new ArrayAdapter<String>(context,
                     android.R.layout.simple_list_item_1,
                     titles);
+
             listView.setAdapter(arAd);
+
             listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {

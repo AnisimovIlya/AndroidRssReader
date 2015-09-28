@@ -4,15 +4,12 @@ import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 
 import java.util.Timer;
 import java.util.TimerTask;
 
 
 public class SplashActivity extends Activity {
-
     static Timer timer;
 
     @Override
