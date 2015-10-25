@@ -7,6 +7,8 @@ import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -26,6 +28,8 @@ public class NewsListActivity extends Activity {
         getTitlesTask = new GetTitleNews(this);
         getTitlesTask.execute();
     }
+
+
 
     public class GetTitleNews extends AsyncTask<Void, ArrayList<RssMessage>, ArrayList<RssMessage>> {
 
@@ -82,5 +86,22 @@ public class NewsListActivity extends Activity {
                 }
             });
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main,menu);
+        getActionBar().setDisplayHomeAsUpEnabled(true);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId()==android.R.id.home)
+        {
+            Intent intent = new Intent(NewsListActivity.this,MainActivity.class);
+            startActivity(intent);
+        }
+        return true;
     }
 }
