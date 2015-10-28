@@ -5,15 +5,18 @@
     android:orientation="vertical"
     tools:context="com.test.ilya.news_02.MainActivity"
     >
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar"
+        ></include>
     <Button
         android:layout_weight="1"
         android:id="@+id/news_list_button"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:background="@drawable/news_list_logo"
+        android:layout_width="170dp"
+        android:layout_height="170dp"
+        android:background="@drawable/ic_news"
         android:layout_gravity="center"
-        android:layout_marginTop="35dp"
-
+        android:layout_marginTop="50dp"
         />
     <TextView
         android:layout_width="wrap_content"
@@ -24,18 +27,18 @@
     <Button
         android:layout_weight="1"
         android:id="@+id/settings_button"
-        android:layout_width="200dp"
-        android:layout_height="@dimen/activity_vertical_margin"
-        android:background="@drawable/settings_logo"
+        android:layout_width="170dp"
+        android:layout_height="170dp"
+        android:background="@drawable/ic_settings"
         android:layout_gravity="center"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="40dp"
         />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/settings_button"
         android:layout_gravity="center"
-        android:layout_marginBottom="45dp"
+        android:layout_marginBottom="50dp"
         />
 
 </LinearLayout>
