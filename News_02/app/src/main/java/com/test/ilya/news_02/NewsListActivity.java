@@ -1,11 +1,13 @@
 package com.test.ilya.news_02;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -17,16 +19,39 @@ import android.widget.ListView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class NewsListActivity extends Activity {
+public class NewsListActivity extends AppCompatActivity {
     SharedPreferences settingsPrefs;
     GetTitleNews getTitlesTask;
+    Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_news_list);
+        toolbar = (Toolbar)findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        ActionBar actionBar = getSupportActionBar();
+        if(actionBar!=null){
+            actionBar.setHomeButtonEnabled(true);
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
         getTitlesTask = new GetTitleNews(this);
         getTitlesTask.execute();
+
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId()==android.R.id.home)
+        {
+            Intent intent = new Intent(NewsListActivity.this,MainActivity.class);
+            startActivity(intent);
+        }
+        return true;
     }
 
 
@@ -88,20 +113,4 @@ public class NewsListActivity extends Activity {
         }
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main,menu);
-        getActionBar().setDisplayHomeAsUpEnabled(true);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId()==android.R.id.home)
-        {
-            Intent intent = new Intent(NewsListActivity.this,MainActivity.class);
-            startActivity(intent);
-        }
-        return true;
-    }
 }
